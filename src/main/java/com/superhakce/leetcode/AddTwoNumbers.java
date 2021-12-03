@@ -1,5 +1,8 @@
 package com.superhakce.leetcode;
 
+/**
+ * 两数之和
+ */
 public class AddTwoNumbers {
 
     private class ListNode {
