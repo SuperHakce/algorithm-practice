@@ -9,4 +9,23 @@ package com.superhakce.leetcode;
  * @author Super
  */
 public class IsPalindrome {
+
+    public boolean isPalindrome(int x) {
+        if(x < 0){
+            return false;
+        }
+        int newInt = 0;
+        int carry = 10;
+        int tmp = x;
+        while(tmp > 0){
+            newInt = newInt * carry + tmp % 10;
+            tmp /= 10;
+        }
+        if(x == newInt){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
