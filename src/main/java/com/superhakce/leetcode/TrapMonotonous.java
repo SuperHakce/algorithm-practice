@@ -10,9 +10,12 @@ public class TrapMonotonous {
     public int trap(int[] height) {
         int sum = 0;
         int startIndex = 0;
+        int targetIndex;
+        int target;
+        int block;
         while (startIndex < height.length){
-            int targetIndex = 0;
-            int target = 0;
+            targetIndex = 0;
+            target = 0;
             for(int i = startIndex + 1; i < height.length; i ++){
                 if(height[i] >= height[startIndex]){
                     targetIndex = i;
@@ -24,7 +27,7 @@ public class TrapMonotonous {
                     target = height[i];
                 }
             }
-            int block = 0;
+            block = 0;
             for(int i = startIndex + 1; i < targetIndex; i ++){
                 block += height[i];
             }
