@@ -16,9 +16,9 @@ public class Trap {
         if(lastIndex <= startIndex + 1){
             return sum;
         }
-        int highest = 0;
+        int highest = -1;
         int highestIndex = 0;
-        int secondHigh = 0;
+        int secondHigh = -1;
         int secondHighIndex = 0;
         for(int i = startIndex; i <= lastIndex; i ++){
             if(height[i] > highest){
