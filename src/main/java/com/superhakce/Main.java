@@ -1,12 +1,12 @@
 package com.superhakce;
 
-import com.superhakce.leetcode.IntToRoman;
+import com.superhakce.leetcode.RomanToInt;
 
 public class Main {
 
     public static void main(String[] args) {
-        IntToRoman intToRoman = new IntToRoman();
-        System.out.println(intToRoman.intToRoman(3999));
+        RomanToInt romanToInt = new RomanToInt();
+        System.out.println(romanToInt.romanToInt("MCMXCIV"));
     }
 
 }
