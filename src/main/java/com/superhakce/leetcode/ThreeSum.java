@@ -3,6 +3,7 @@ package com.superhakce.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 第三次查找可以使用二分查找进行优化
@@ -36,7 +37,6 @@ public class ThreeSum {
                 if(nums[i] + nums[j] > 0){
                     break;
                 }
-                // 二分查找
                 int target = (nums[i] + nums[j]) * -1;
                 if(j + 1 < length && target < nums[j + 1]){
                     continue;
@@ -44,6 +44,7 @@ public class ThreeSum {
                 if(target > nums[length - 1]){
                     continue;
                 }
+                // 二分查找
                 int number = find(nums, target,j + 1, length - 1);
                 if(number == flag){
                     continue;
@@ -117,6 +118,39 @@ public class ThreeSum {
             }
         }
         return resultList;
+    }
+
+    /**
+     * 双指针
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> threeSumDoubleItem(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if(Objects.isNull(nums) || nums.length < 3){return ans;}
+        Arrays.sort(nums);
+        if(nums[0] > 0){return ans;}
+        for(int i = 0; i < nums.length - 2; i ++){
+            if(i > 0 && nums[i - 1] == nums[i]){continue;}
+            int left = i + 1;
+            int right = nums.length - 1;
+            while(left < right){
+                if(nums[i] + 2 * nums[left] > 0 || nums[i] + 2 * nums[right] < 0){break;}
+                if(nums[left] + nums[right] + nums[i] == 0){
+                    List<Integer> list = new ArrayList<>(3);
+                    list.add(nums[i]);
+                    list.add(nums[left]);
+                    list.add(nums[right]);
+                    ans.add(list);
+                    left ++;
+                    right --;
+                    while (left < right && nums[left] == nums[left - 1]){left ++;}
+                    while (left < right && nums[right] == nums[right + 1]){right --;}
+                }else if(nums[left] + nums[right] + nums[i] < 0){left ++;}
+                else{right --;}
+            }
+        }
+        return ans;
     }
 
 }
